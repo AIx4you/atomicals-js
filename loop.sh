@@ -4,7 +4,6 @@ while true; do
   fee=$(python3 gas.py)
 
   if [ $fee -lt 80 ]; then
-    # 如果 fee 小于 37，则在当前 fee 的基础上 +3
     if [ $fee -lt 37 ]; then
       echo "Original fee is $fee. Adding 3..."
       fee=$((fee + 3))
