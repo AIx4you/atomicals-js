@@ -121,9 +121,10 @@ function logMiningProgressToConsole(
         }
         return;
     }
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
-    process.stdout.write(chalk.red(txid, " nonces: ", nonces));
+    process.stdout.clearLine?.(0);
+    process.stdout.cursorTo?.(0);
+    // rc fix
+    // process.stdout.write?.(chalk.red(txid, " nonces: ", nonces));
 }
 
 function printBitworkLog(bitworkInfo: BitworkInfo, commit?: boolean) {
@@ -1017,9 +1018,9 @@ export class AtomicalOperationBuilder {
                     this.bitworkInfoReveal?.ext as any
                 )
             ) {
-                process.stdout.clearLine(0);
-                process.stdout.cursorTo(0);
-                process.stdout.write(
+                process.stdout.clearLine?.(0);
+                process.stdout.cursorTo?.(0);
+                process.stdout.write?.(
                     chalk.green(checkTxid, " nonces: " + noncesGenerated)
                 );
                 console.log(
@@ -1169,7 +1170,7 @@ export class AtomicalOperationBuilder {
                     // Additional inputs
                     this.inputUtxos.length * INPUT_BYTES_BASE +
                     // Outputs
-                    this.additionalOutputs.length * OUTPUT_BYTES_BASE + 
+                    this.additionalOutputs.length * OUTPUT_BYTES_BASE +
                     // Bitwork Output OP_RETURN Size Bytes
                     op_Return_SizeBytes)
                 )
